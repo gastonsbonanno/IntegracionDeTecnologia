@@ -8,7 +8,6 @@ import android.os.BatteryManager;
 import android.os.Handler;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,13 +15,14 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     TextView loTemperatura;
-    EditText loConfTemp;
+
     MediaPlayer alarm;
     Handler handler;
     Runnable runnable;
     int iTemperatura;
-
-
+    Integer iConfTemp;
+    Bundle bundle;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +30,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loTemperatura = (TextView)findViewById(R.id.lo_temperatura);
-        loConfTemp = (EditText) findViewById(R.id.lo_confTemp);
         alarm= MediaPlayer.create(MainActivity.this,R.raw.alarm);
-
+        intent = getIntent();
+        try {
+            bundle = intent.getExtras();
+            int intAux = bundle.getInt("confTemp");
+            iConfTemp = new Integer(intAux);
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+            Toast.makeText(MainActivity.this, "No es posible obtener la configuración", Toast.LENGTH_SHORT).show();
+        }
 
         runnable = new Runnable() {
             @Override
             public void run() {
                 iTemperatura = _getTemperaturaActual();
-                Integer iConfTemp = null;
-                try {
-                    iConfTemp = new Integer(loConfTemp.getText().toString());
-                }catch (NumberFormatException e){
-                    e.printStackTrace();
-                    Toast.makeText(MainActivity.this, "No es posible obtener la configuración", Toast.LENGTH_SHORT).show();
-                }
                 handler.postDelayed(runnable, 5000);
 
                 if(iConfTemp != null && iTemperatura < iConfTemp){
@@ -64,4 +64,10 @@ public class MainActivity extends AppCompatActivity {
         int temperatura = (bateriaIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, -1))/10;
         return temperatura;
     }
+
+    public void onBackPressed() {
+        iConfTemp = -99; // Cambiar esto.
+        finish();
+    }
+
 }

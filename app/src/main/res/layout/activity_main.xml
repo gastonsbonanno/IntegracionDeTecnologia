@@ -10,22 +10,14 @@
 
     <ImageView
         android:id="@+id/fondo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="false"
         android:cropToPadding="true"
-        app:srcCompat="@drawable/fondoapp" />
-
-    <EditText
-        android:id="@+id/lo_confTemp"
-        android:layout_width="fill_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/textinputborder"
-        android:paddingLeft="10dp"
-        android:inputType="textVisiblePassword" >
-
-    </EditText>
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fondoappclaro" />
 
     <TextView
         android:id="@+id/lo_temperatura"
@@ -36,13 +28,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="Configuración de la temperatura" />
+
 
 
 </android.support.constraint.ConstraintLayout>
