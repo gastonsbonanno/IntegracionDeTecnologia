@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.concurrent.TimeUnit;
+
 import de.nitri.gauge.Gauge;
 
 
@@ -96,10 +98,12 @@ public class MainActivity extends AppCompatActivity {
 */
 
     public void onBackPressed() {
-        //iConfTemp = -99; // Cambiar esto.
+        iConfTemp = null; // Cambiar esto.
         estadoAlarma = false;
-        if(!iConfTiempo.equals(0))
+        try {
             timer.cancel();
+        }catch (Exception e){}
+
         finish();
     }
 
@@ -116,9 +120,13 @@ public class MainActivity extends AppCompatActivity {
     private void setTimer(Integer milisegundos){
         timer = new CountDownTimer(milisegundos,1000) {
             @Override
-            public void onTick(long l) {
+            public void onTick(long lMillis) {
                 //loTiempo.setText(Long.toString(l));
-                loTiempo.setText("Tiempo restante: "+l/60/1000+" Minutos");
+                String tiempoActual = String.format("%02d:%02d:%02d"
+                        , TimeUnit.MILLISECONDS.toHours(lMillis)
+                        , TimeUnit.MILLISECONDS.toMinutes(lMillis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(lMillis))
+                        , TimeUnit.MILLISECONDS.toSeconds(lMillis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(lMillis)));
+                loTiempo.setText("Tiempo restante: "+tiempoActual);
             }
 
             @Override

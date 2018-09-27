@@ -40,30 +40,28 @@
 
     <TextView
         android:id="@+id/lo_temperatura"
-        android:layout_width="360dp"
-        android:layout_height="37dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="309dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text=""
         android:textSize="20dp"
         android:textStyle="bold|italic"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fondo" />
 
 
     <TextView
         android:id="@+id/lo_tiempo"
-        android:layout_width="242dp"
-        android:layout_height="37dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="464dp"
+        android:layout_width="314dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:text=""
         android:textSize="20dp"
         android:textStyle="bold|italic"
-        android:text=""
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fondo" />
+        app:layout_constraintBottom_toBottomOf="@+id/fondo"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
