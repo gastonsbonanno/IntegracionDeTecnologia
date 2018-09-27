@@ -53,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
             iConfTemp = new Integer(intAux);
             intAux = bundle.getInt("confTiempo");
             iConfTiempo = new Integer(intAux);
-            setTimer(iConfTiempo*60*1000);
-            timer.start();
+            if(!iConfTiempo.equals(0)) {
+                setTimer(iConfTiempo * 60 * 1000);
+                timer.start();
+            }
         }catch (NumberFormatException e){
             e.printStackTrace();
             Toast.makeText(MainActivity.this, "No es posible obtener la configuración", Toast.LENGTH_SHORT).show();
@@ -96,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         //iConfTemp = -99; // Cambiar esto.
         estadoAlarma = false;
-        timer.cancel();
+        if(!iConfTiempo.equals(0))
+            timer.cancel();
         finish();
     }
 

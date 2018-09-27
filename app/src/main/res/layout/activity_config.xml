@@ -23,6 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="464dp"
         android:layout_marginStart="8dp"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
         android:text="Configuración de la temperatura"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -42,9 +44,11 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginBottom="352dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="348dp"
         android:text="Configuración de tiempo (Minutos)"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

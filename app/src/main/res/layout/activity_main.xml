@@ -40,11 +40,15 @@
 
     <TextView
         android:id="@+id/lo_temperatura"
-        android:layout_width="242dp"
+        android:layout_width="360dp"
         android:layout_height="37dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
         android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fondo" />
 
@@ -55,6 +59,8 @@
         android:layout_height="37dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="464dp"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
         android:text=""
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fondo" />
