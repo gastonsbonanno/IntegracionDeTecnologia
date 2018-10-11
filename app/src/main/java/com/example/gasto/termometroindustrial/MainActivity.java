@@ -19,6 +19,7 @@ import de.nitri.gauge.Gauge;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView loConfTemp;
     TextView loTemperatura;
     TextView loTiempo;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        loConfTemp = (TextView)findViewById(R.id.lo_conftemp);
         loTemperatura = (TextView)findViewById(R.id.lo_temperatura);
         loTiempo = (TextView)findViewById(R.id.lo_tiempo);
         gauge = (Gauge)findViewById(R.id.gauge);
@@ -55,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
             iConfTemp = new Integer(intAux);
             intAux = bundle.getInt("confTiempo");
             iConfTiempo = new Integer(intAux);
+            if(iConfTemp != null && !iConfTemp.equals(0)) {
+                loConfTemp.setText("Temperatura mínima: "+iConfTemp+"C°");
+            }
             if(!iConfTiempo.equals(0)) {
                 setTimer(iConfTiempo * 60 * 1000);
                 timer.start();
