@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class ConfigActivity extends AppCompatActivity{
 
     EditText loConfTemp;
+    EditText loConfTempMax;
     EditText loConfTiempo;
     Button loBotonComenzar;
     Intent intent;
@@ -20,6 +21,7 @@ public class ConfigActivity extends AppCompatActivity{
         setContentView(R.layout.activity_config);
 
         loConfTemp = (EditText) findViewById(R.id.lo_confTemp);
+        loConfTempMax = (EditText) findViewById(R.id.lo_confTempMax);
         loConfTiempo = (EditText) findViewById(R.id.lo_confTiempo);
         loBotonComenzar = (Button) findViewById(R.id.lo_botonComenzar);
         loBotonComenzar.setOnClickListener(new onClickClass());

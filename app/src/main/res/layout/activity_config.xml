@@ -18,22 +18,22 @@
         app:srcCompat="@drawable/fondoappclaro" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="464dp"
+        android:layout_marginBottom="460dp"
         android:layout_marginStart="8dp"
+        android:text="Temperatura Máxima"
         android:textSize="20dp"
         android:textStyle="bold|italic"
-        android:text="Configuración de la temperatura"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/lo_confTemp"
+        android:id="@+id/lo_confTempMax"
         android:layout_width="fill_parent"
         android:layout_height="51dp"
-        android:layout_marginBottom="404dp"
+        android:layout_marginBottom="400dp"
         android:background="@drawable/textinputborder"
         android:inputType="textVisiblePassword"
         android:paddingLeft="10dp"
@@ -42,10 +42,32 @@
 
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="340dp"
+        android:text="Temperatura Mínima"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/lo_confTemp"
+        android:layout_width="fill_parent"
+        android:layout_height="51dp"
+        android:layout_marginBottom="280dp"
+        android:background="@drawable/textinputborder"
+        android:inputType="textVisiblePassword"
+        android:paddingLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fondo"
+        app:layout_constraintEnd_toEndOf="parent"></EditText>
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="28dp"
-        android:layout_marginBottom="348dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="220dp"
         android:text="Configuración de tiempo (Minutos)"
         android:textSize="20dp"
         android:textStyle="bold|italic"
@@ -57,7 +79,7 @@
         android:id="@+id/lo_confTiempo"
         android:layout_width="fill_parent"
         android:layout_height="51dp"
-        android:layout_marginBottom="288dp"
+        android:layout_marginBottom="160dp"
         android:background="@drawable/textinputborder"
         android:inputType="textVisiblePassword"
         android:paddingLeft="10dp"
@@ -69,7 +91,7 @@
         android:id="@+id/lo_botonComenzar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginEnd="148dp"
         android:background="@drawable/textinputborder"
         android:text="Comenzar"
