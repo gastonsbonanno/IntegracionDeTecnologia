@@ -23,12 +23,11 @@
 
     <de.nitri.gauge.Gauge
         android:id="@+id/gauge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="338dp"
+        android:layout_height="343dp"
         android:layout_gravity="center"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fondo"
         gauge:initialValue="0"
@@ -54,8 +53,20 @@
         android:id="@+id/lo_conftemp"
         android:layout_width="309dp"
         android:layout_height="33dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="400dp"
+        android:text=""
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fondo" />
+
+    <TextView
+        android:id="@+id/lo_conftempMax"
+        android:layout_width="309dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="440dp"
         android:text=""
         android:textSize="20dp"
         android:textStyle="bold|italic"
@@ -65,8 +76,8 @@
 
     <TextView
         android:id="@+id/lo_tiempo"
-        android:layout_width="314dp"
-        android:layout_height="86dp"
+        android:layout_width="354dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
         android:text=""

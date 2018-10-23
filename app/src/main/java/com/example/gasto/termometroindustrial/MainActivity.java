@@ -20,14 +20,16 @@ import de.nitri.gauge.Gauge;
 public class MainActivity extends AppCompatActivity {
 
     TextView loConfTemp;
+    TextView loConfTempMax;
     TextView loTemperatura;
     TextView loTiempo;
 
     MediaPlayer alarm;
     Handler handler;
     Runnable runnable;
-    int iTemperatura;
+    int iTemperaturaActual;
     Integer iConfTemp;
+    Integer iConfTempMax;
     Integer iConfTiempo;
     Bundle bundle;
     Intent intent;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loConfTemp = (TextView)findViewById(R.id.lo_conftemp);
+        loConfTempMax = (TextView)findViewById(R.id.lo_conftempMax);
         loTemperatura = (TextView)findViewById(R.id.lo_temperatura);
         loTiempo = (TextView)findViewById(R.id.lo_tiempo);
         gauge = (Gauge)findViewById(R.id.gauge);
@@ -55,10 +58,15 @@ public class MainActivity extends AppCompatActivity {
             bundle = intent.getExtras();
             int intAux = bundle.getInt("confTemp");
             iConfTemp = new Integer(intAux);
+            intAux = bundle.getInt("confTempMax");
+            iConfTempMax = new Integer(intAux);
             intAux = bundle.getInt("confTiempo");
             iConfTiempo = new Integer(intAux);
             if(iConfTemp != null && !iConfTemp.equals(0)) {
                 loConfTemp.setText("Temperatura mínima: "+iConfTemp+"C°");
+            }
+            if(iConfTempMax != null && !iConfTempMax.equals(0)) {
+                loConfTempMax.setText("Temperatura máxima: "+iConfTempMax+"C°");
             }
             if(!iConfTiempo.equals(0)) {
                 setTimer(iConfTiempo * 60 * 1000);
@@ -72,15 +80,19 @@ public class MainActivity extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
-                iTemperatura = _getTemperaturaActual();
+                iTemperaturaActual = _getTemperaturaActual();
                 handler.postDelayed(runnable, 5000);
-                gauge.setValue(iTemperatura);
+                gauge.setValue(iTemperaturaActual);
 
-                if(iConfTemp != null && iTemperatura < iConfTemp){
+                if(iConfTemp != null && iTemperaturaActual < iConfTemp){
                     estadoAlarma = true;
                     Toast.makeText(MainActivity.this, "La temperatura es muy baja", Toast.LENGTH_SHORT).show();
                 }
-                loTemperatura.setText("Temperatura actual: "+iTemperatura+"C°");
+                if(iConfTempMax != null && iTemperaturaActual > iConfTempMax){
+                    estadoAlarma = true;
+                    Toast.makeText(MainActivity.this, "La temperatura es muy alta", Toast.LENGTH_SHORT).show();
+                }
+                loTemperatura.setText("Temperatura actual: "+iTemperaturaActual+"C°");
                 //loTiempo.setText("Tiempo restante: "+iConfTiempo+" Minutos");
                 if(estadoAlarma)
                     iniciarAlarma();
@@ -97,13 +109,10 @@ public class MainActivity extends AppCompatActivity {
         return temperatura;
     }
 
- /*      private int _getTiempoRestante(){
-        return tiempoRestante;
-    }
-*/
 
     public void onBackPressed() {
-        iConfTemp = null; // Cambiar esto.
+        iConfTemp = null;
+        iConfTempMax = null;
         estadoAlarma = false;
         try {
             timer.cancel();
@@ -111,15 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
         finish();
     }
-
-/*
-    public class CountDownT extends CountDownTimer {
-        public CountDownT(long milisegundos, long TimeGap){
-            super.(milisegundos)
-        }
-
-    }
-*/
 
 
     private void setTimer(Integer milisegundos){

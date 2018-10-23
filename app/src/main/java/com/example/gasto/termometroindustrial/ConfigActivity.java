@@ -48,6 +48,7 @@ public class ConfigActivity extends AppCompatActivity{
                     startActivity(intent);
             }
             catch (Exception e) {
+                e.printStackTrace();
                 Toast.makeText(ConfigActivity.this, "Debe seleccionar una temperatura valida", Toast.LENGTH_SHORT).show();
             }
         }
@@ -56,8 +57,21 @@ public class ConfigActivity extends AppCompatActivity{
 
     public boolean validarPermiteModificar(){
         intent = new Intent(ConfigActivity.this, MainActivity.class);
-        if(!loConfTemp.getText().toString().equals("")){
-            intent.putExtra("confTemp",new Integer(loConfTemp.getText().toString()));
+
+        if(!loConfTemp.getText().toString().equals("") && !loConfTempMax.getText().toString().equals("")) {
+            int iTemp = new Integer(loConfTemp.getText().toString());
+            int iTempMax = new Integer(loConfTempMax.getText().toString());
+            if (iTemp > iTempMax){
+                Toast.makeText(ConfigActivity.this, "La temperatura mínima debe ser menor a la temperatura máxima", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if(!loConfTemp.getText().toString().equals("") || !loConfTempMax.getText().toString().equals("")){
+            if(!loConfTemp.getText().toString().equals(""))
+                intent.putExtra("confTemp",new Integer(loConfTemp.getText().toString()));
+            if(!loConfTempMax.getText().toString().equals(""))
+                intent.putExtra("confTempMax",new Integer(loConfTempMax.getText().toString()));
         }else{
             Toast.makeText(ConfigActivity.this, "Debe seleccionar una temperatura", Toast.LENGTH_SHORT).show();
             return false;

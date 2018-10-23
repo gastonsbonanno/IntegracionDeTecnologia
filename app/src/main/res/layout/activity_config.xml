@@ -35,7 +35,7 @@
         android:layout_height="51dp"
         android:layout_marginBottom="400dp"
         android:background="@drawable/textinputborder"
-        android:inputType="textVisiblePassword"
+        android:inputType="number"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/fondo"
         app:layout_constraintEnd_toEndOf="parent"></EditText>
@@ -58,7 +58,7 @@
         android:layout_height="51dp"
         android:layout_marginBottom="280dp"
         android:background="@drawable/textinputborder"
-        android:inputType="textVisiblePassword"
+        android:inputType="number"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/fondo"
         app:layout_constraintEnd_toEndOf="parent"></EditText>
@@ -81,7 +81,7 @@
         android:layout_height="51dp"
         android:layout_marginBottom="160dp"
         android:background="@drawable/textinputborder"
-        android:inputType="textVisiblePassword"
+        android:inputType="number"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"></EditText>
