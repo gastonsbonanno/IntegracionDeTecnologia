@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         loConfTemp = (TextView)findViewById(R.id.lo_conftemp);
         loConfTempMax = (TextView)findViewById(R.id.lo_conftempMax);
@@ -63,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
             intAux = bundle.getInt("confTiempo");
             iConfTiempo = new Integer(intAux);
             if(iConfTemp != null && !iConfTemp.equals(0)) {
-                loConfTemp.setText("Temperatura mínima: "+iConfTemp+"C°");
+                loConfTemp.setText("Temperatura mínima: "+iConfTemp+"°C");
             }
             if(iConfTempMax != null && !iConfTempMax.equals(0)) {
-                loConfTempMax.setText("Temperatura máxima: "+iConfTempMax+"C°");
+                loConfTempMax.setText("Temperatura máxima: "+iConfTempMax+"°C");
             }
             if(!iConfTiempo.equals(0)) {
                 setTimer(iConfTiempo * 60 * 1000);
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     estadoAlarma = true;
                     Toast.makeText(MainActivity.this, "La temperatura es muy alta", Toast.LENGTH_SHORT).show();
                 }
-                loTemperatura.setText("Temperatura actual: "+iTemperaturaActual+"C°");
+                loTemperatura.setText("Temperatura actual: "+iTemperaturaActual+"°C");
                 //loTiempo.setText("Tiempo restante: "+iConfTiempo+" Minutos");
                 if(estadoAlarma)
                     iniciarAlarma();
