@@ -96,9 +96,9 @@ public class ConfigActivity extends AppCompatActivity{
 
         if(!loConfTemp.getText().toString().equals("") || !loConfTempMax.getText().toString().equals("")){
             if(!loConfTemp.getText().toString().equals(""))
-                intent.putExtra("confTemp",new Integer(loConfTemp.getText().toString()));
+                intent.putExtra("confTemp",loConfTemp.getText().toString());
             if(!loConfTempMax.getText().toString().equals(""))
-                intent.putExtra("confTempMax",new Integer(loConfTempMax.getText().toString()));
+                intent.putExtra("confTempMax",loConfTempMax.getText().toString());
         }else{
             Toast.makeText(ConfigActivity.this, "Debe seleccionar una temperatura", Toast.LENGTH_SHORT).show();
             return false;
@@ -107,7 +107,7 @@ public class ConfigActivity extends AppCompatActivity{
         if(!loConfTiempo.getText().toString().equals("")){
             String sAux = loConfTiempo.getText().toString();
             if(Integer.parseInt(sAux)> 0){
-                intent.putExtra("confTiempo",new Integer(loConfTiempo.getText().toString()));
+                intent.putExtra("confTiempo",loConfTiempo.getText().toString());
             }else{
                 Toast.makeText(ConfigActivity.this, "Debe seleccionar una valor de tiempo válido", Toast.LENGTH_SHORT).show();
                 return false;

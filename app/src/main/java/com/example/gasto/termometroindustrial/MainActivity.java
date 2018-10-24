@@ -57,22 +57,34 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             bundle = intent.getExtras();
+            /*
             int intAux = bundle.getInt("confTemp");
             iConfTemp = new Integer(intAux);
             intAux = bundle.getInt("confTempMax");
             iConfTempMax = new Integer(intAux);
             intAux = bundle.getInt("confTiempo");
             iConfTiempo = new Integer(intAux);
-            if(iConfTemp != null && !iConfTemp.equals(0)) {
+            */
+            String sAux = bundle.getString("confTemp",null);
+            if(sAux != null) {
+                iConfTemp = Integer.parseInt(sAux);
                 loConfTemp.setText("Temperatura mínima: "+iConfTemp+"°C");
             }
-            if(iConfTempMax != null && !iConfTempMax.equals(0)) {
+
+            sAux = bundle.getString("confTempMax",null);
+            if(sAux != null) {
+                iConfTempMax = Integer.parseInt(sAux);
                 loConfTempMax.setText("Temperatura máxima: "+iConfTempMax+"°C");
             }
-            if(!iConfTiempo.equals(0)) {
-                setTimer(iConfTiempo * 60 * 1000);
-                timer.start();
+
+            sAux = bundle.getString("confTiempo",null);
+            if(sAux != null) {
+                iConfTiempo = Integer.parseInt(sAux);
+                if(!iConfTiempo.equals(0))
+                    setTimer(iConfTiempo * 60 * 1000);
+                    timer.start();
             }
+
         }catch (NumberFormatException e){
             e.printStackTrace();
             Toast.makeText(MainActivity.this, "No es posible obtener la configuración", Toast.LENGTH_SHORT).show();
@@ -84,17 +96,17 @@ public class MainActivity extends AppCompatActivity {
                 iTemperaturaActual = _getTemperaturaActual();
                 handler.postDelayed(runnable, 5000);
                 gauge.setValue(iTemperaturaActual);
+                loTemperatura.setText("Temperatura actual: "+iTemperaturaActual+"°C");
 
                 if(iConfTemp != null && iTemperaturaActual < iConfTemp){
                     estadoAlarma = true;
                     Toast.makeText(MainActivity.this, "La temperatura es muy baja", Toast.LENGTH_SHORT).show();
                 }
-                if(iConfTempMax != null && iTemperaturaActual > iConfTempMax){
+                if(iConfTempMax != null  && iTemperaturaActual > iConfTempMax){
                     estadoAlarma = true;
                     Toast.makeText(MainActivity.this, "La temperatura es muy alta", Toast.LENGTH_SHORT).show();
                 }
-                loTemperatura.setText("Temperatura actual: "+iTemperaturaActual+"°C");
-                //loTiempo.setText("Tiempo restante: "+iConfTiempo+" Minutos");
+
                 if(estadoAlarma)
                     iniciarAlarma();
             }
