@@ -18,7 +18,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fondoappclaro" />
+        app:srcCompat="@drawable/fondoapp" />
 
 
     <de.nitri.gauge.Gauge
